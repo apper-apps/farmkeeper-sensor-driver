@@ -42,10 +42,10 @@ const CropCard = ({ crop, onEdit, onDelete }) => {
           <div className="flex items-center space-x-3">
             <div className="p-2 rounded-full bg-secondary/10 text-secondary">
               <ApperIcon name={getCropIcon(crop.type)} size={20} />
-            </div>
+</div>
             <div>
-              <h3 className="font-semibold text-primary text-lg">{crop.type}</h3>
-              <p className="text-sm text-gray-600">{crop.variety}</p>
+              <h3 className="font-semibold text-primary text-lg">{crop.Name || `${crop.type} - ${crop.variety}`}</h3>
+              <p className="text-sm text-gray-600">{crop.type} • {crop.variety}</p>
             </div>
           </div>
           <Badge variant={statusColors[crop.status]}>
