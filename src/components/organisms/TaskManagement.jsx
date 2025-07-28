@@ -12,7 +12,7 @@ import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
 import { toast } from "react-toastify";
 import { format, isAfter, isBefore } from "date-fns";
-
+import { createPortal } from "react-dom";
 const TaskManagement = ({ selectedFarm }) => {
   const [tasks, setTasks] = useState([]);
   const [crops, setCrops] = useState([]);
@@ -251,90 +251,124 @@ const TaskManagement = ({ selectedFarm }) => {
       </div>
 
       {/* Add/Edit Form */}
-      <AnimatePresence>
-        {showForm && (
+{/* Add/Edit Modal */}
+      {showForm && createPortal(
+        <AnimatePresence>
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                handleCancel();
+              }
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') {
+                handleCancel();
+              }
+            }}
+            tabIndex={-1}
           >
-            <Card>
-              <CardHeader>
-                <CardTitle>
-                  {editingTask ? "Edit Task" : "Add New Task"}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+            
+            {/* Modal Content */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Card className="shadow-2xl">
+                <CardHeader className="relative">
+                  <CardTitle>
+                    {editingTask ? "Edit Task" : "Add New Task"}
+                  </CardTitle>
+                  <button
+                    type="button"
+                    onClick={handleCancel}
+                    className="absolute right-4 top-4 p-1 rounded-lg hover:bg-gray-100 transition-colors"
+                    aria-label="Close modal"
+                  >
+                    <ApperIcon name="X" size={20} />
+                  </button>
+                </CardHeader>
+                <CardContent>
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        label="Task Title"
+                        name="title"
+                        value={formData.title}
+                        onChange={handleInputChange}
+                        placeholder="e.g., Water tomatoes in greenhouse"
+                        required
+                      />
+                      <FormField
+                        label="Task Type"
+                        type="select"
+                        name="type"
+                        value={formData.type}
+                        onChange={handleInputChange}
+                        options={taskTypes}
+                        required
+                      />
+                      <FormField
+                        label="Related Crop (Optional)"
+                        type="select"
+                        name="cropId"
+                        value={formData.cropId}
+                        onChange={handleInputChange}
+                        options={cropOptions}
+                        placeholder="Select a crop"
+                      />
+                      <FormField
+                        label="Due Date"
+                        type="date"
+                        name="dueDate"
+                        value={formData.dueDate}
+                        onChange={handleInputChange}
+                        required
+                      />
+                      <FormField
+                        label="Priority"
+                        type="select"
+                        name="priority"
+                        value={formData.priority}
+                        onChange={handleInputChange}
+                        options={priorityOptions}
+                        required
+                      />
+                    </div>
                     <FormField
-                      label="Task Title"
-                      name="title"
-                      value={formData.title}
+                      label="Notes (Optional)"
+                      type="textarea"
+                      name="notes"
+                      value={formData.notes}
                       onChange={handleInputChange}
-                      placeholder="e.g., Water tomatoes in greenhouse"
-                      required
+                      placeholder="Additional details about this task..."
                     />
-                    <FormField
-                      label="Task Type"
-                      type="select"
-                      name="type"
-                      value={formData.type}
-                      onChange={handleInputChange}
-                      options={taskTypes}
-                      required
-                    />
-                    <FormField
-                      label="Related Crop (Optional)"
-                      type="select"
-                      name="cropId"
-                      value={formData.cropId}
-                      onChange={handleInputChange}
-                      options={cropOptions}
-                      placeholder="Select a crop"
-                    />
-                    <FormField
-                      label="Due Date"
-                      type="date"
-                      name="dueDate"
-                      value={formData.dueDate}
-                      onChange={handleInputChange}
-                      required
-                    />
-                    <FormField
-                      label="Priority"
-                      type="select"
-                      name="priority"
-                      value={formData.priority}
-                      onChange={handleInputChange}
-                      options={priorityOptions}
-                      required
-                    />
-                  </div>
-                  <FormField
-                    label="Notes (Optional)"
-                    type="textarea"
-                    name="notes"
-                    value={formData.notes}
-                    onChange={handleInputChange}
-                    placeholder="Additional details about this task..."
-                  />
-                  <div className="flex justify-end space-x-3">
-                    <Button type="button" variant="outline" onClick={handleCancel}>
-                      Cancel
-                    </Button>
-                    <Button type="submit">
-                      {editingTask ? "Update Task" : "Add Task"}
-                    </Button>
-                  </div>
-                </form>
-              </CardContent>
-            </Card>
+                    <div className="flex justify-end space-x-3">
+                      <Button type="button" variant="outline" onClick={handleCancel}>
+                        Cancel
+                      </Button>
+                      <Button type="submit">
+                        {editingTask ? "Update Task" : "Add Task"}
+                      </Button>
+                    </div>
+                  </form>
+                </CardContent>
+              </Card>
+            </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>
-
+        </AnimatePresence>,
+        document.body
+      )}
       {/* Tasks List */}
       {filteredTasks.length === 0 ? (
         <Empty
