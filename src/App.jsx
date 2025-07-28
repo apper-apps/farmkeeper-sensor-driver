@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import Sidebar from "@/components/organisms/Sidebar";
 import Header from "@/components/organisms/Header";
 import Dashboard from "@/components/pages/Dashboard";
+import Farms from "@/components/pages/Farms";
 import Crops from "@/components/pages/Crops";
 import Tasks from "@/components/pages/Tasks";
 import Finances from "@/components/pages/Finances";
@@ -11,7 +12,6 @@ import Weather from "@/components/pages/Weather";
 import farmService from "@/services/api/farmService";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
-
 function App() {
   const [farms, setFarms] = useState([]);
   const [selectedFarm, setSelectedFarm] = useState("");
@@ -67,8 +67,9 @@ function App() {
         
         <main className="flex-1 lg:pl-64">
           <div className="px-4 py-6 sm:px-6 lg:px-8">
-            <Routes>
+<Routes>
               <Route path="/" element={<Dashboard selectedFarm={selectedFarm} />} />
+              <Route path="/farms" element={<Farms selectedFarm={selectedFarm} />} />
               <Route path="/crops" element={<Crops selectedFarm={selectedFarm} />} />
               <Route path="/tasks" element={<Tasks selectedFarm={selectedFarm} />} />
               <Route path="/finances" element={<Finances selectedFarm={selectedFarm} />} />
