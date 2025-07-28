@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "name": "Green Valley Farm",
+    "location": "California, USA",
+    "size": 250,
+    "createdAt": "2023-01-15T08:00:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "Sunrise Acres",
+    "location": "Texas, USA", 
+    "size": 180,
+    "createdAt": "2023-03-20T10:30:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "Prairie Winds Farm",
+    "location": "Iowa, USA",
+    "size": 420,
+    "createdAt": "2023-02-10T14:15:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "Mountain View Ranch",
+    "location": "Colorado, USA",
+    "size": 320,
+    "createdAt": "2023-04-05T09:45:00Z"
+  }
+]

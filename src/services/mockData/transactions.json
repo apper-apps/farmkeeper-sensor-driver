@@ -1,0 +1,92 @@
+[
+  {
+    "Id": 1,
+    "farmId": "1",
+    "type": "expense",
+    "category": "seeds",
+    "amount": 350.00,
+    "date": "2024-04-10T00:00:00Z",
+    "description": "Corn and tomato seeds for spring planting"
+  },
+  {
+    "Id": 2,
+    "farmId": "1",
+    "type": "expense",
+    "category": "fertilizer",
+    "amount": 425.50,
+    "date": "2024-05-15T00:00:00Z",
+    "description": "Nitrogen fertilizer for field crops"
+  },
+  {
+    "Id": 3,
+    "farmId": "1",
+    "type": "income",
+    "category": "sales",
+    "amount": 1250.00,
+    "date": "2024-06-20T00:00:00Z",
+    "description": "Farmers market sales - lettuce and herbs"
+  },
+  {
+    "Id": 4,
+    "farmId": "1",
+    "type": "expense",
+    "category": "fuel",
+    "amount": 180.75,
+    "date": "2024-06-25T00:00:00Z",
+    "description": "Diesel fuel for tractors"
+  },
+  {
+    "Id": 5,
+    "farmId": "2",
+    "type": "income",
+    "category": "harvest",
+    "amount": 3200.00,
+    "date": "2024-07-10T00:00:00Z",
+    "description": "Wheat harvest sale to grain elevator"
+  },
+  {
+    "Id": 6,
+    "farmId": "2",
+    "type": "expense",
+    "category": "equipment",
+    "amount": 850.00,
+    "date": "2024-05-20T00:00:00Z",
+    "description": "New irrigation sprinklers"
+  },
+  {
+    "Id": 7,
+    "farmId": "2",
+    "type": "expense",
+    "category": "labor",
+    "amount": 1200.00,
+    "date": "2024-06-15T00:00:00Z",
+    "description": "Seasonal workers for weeding"
+  },
+  {
+    "Id": 8,
+    "farmId": "3",
+    "type": "expense",
+    "category": "seeds",
+    "amount": 680.25,
+    "date": "2024-04-20T00:00:00Z",
+    "description": "Soybean seeds - Roundup Ready variety"
+  },
+  {
+    "Id": 9,
+    "farmId": "3",
+    "type": "income",
+    "category": "subsidy",
+    "amount": 950.00,
+    "date": "2024-06-01T00:00:00Z",
+    "description": "Conservation program payment"
+  },
+  {
+    "Id": 10,
+    "farmId": "1",
+    "type": "income",
+    "category": "sales",
+    "amount": 875.50,
+    "date": "2024-07-05T00:00:00Z",
+    "description": "Direct sales to restaurants"
+  }
+]

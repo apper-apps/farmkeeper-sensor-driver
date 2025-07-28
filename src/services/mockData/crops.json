@@ -1,0 +1,62 @@
+[
+  {
+    "Id": 1,
+    "farmId": "1",
+    "type": "corn",
+    "variety": "Sweet Corn",
+    "plantingDate": "2024-04-15T00:00:00Z",
+    "fieldLocation": "North Field",
+    "status": "growing",
+    "expectedHarvest": "2024-08-20T00:00:00Z"
+  },
+  {
+    "Id": 2,
+    "farmId": "1",
+    "type": "tomato",
+    "variety": "Cherry Tomato",
+    "plantingDate": "2024-05-01T00:00:00Z",
+    "fieldLocation": "Greenhouse 1",
+    "status": "growing",
+    "expectedHarvest": "2024-07-15T00:00:00Z"
+  },
+  {
+    "Id": 3,
+    "farmId": "1",
+    "type": "lettuce",
+    "variety": "Romaine Lettuce",
+    "plantingDate": "2024-06-10T00:00:00Z",
+    "fieldLocation": "South Field",
+    "status": "planted",
+    "expectedHarvest": "2024-08-05T00:00:00Z"
+  },
+  {
+    "Id": 4,
+    "farmId": "2",
+    "type": "wheat",
+    "variety": "Winter Wheat",
+    "plantingDate": "2024-03-20T00:00:00Z",
+    "fieldLocation": "East Pasture",
+    "status": "harvested",
+    "expectedHarvest": "2024-07-10T00:00:00Z"
+  },
+  {
+    "Id": 5,
+    "farmId": "2",
+    "type": "beans",
+    "variety": "Black Beans",
+    "plantingDate": "2024-05-15T00:00:00Z",
+    "fieldLocation": "West Field",
+    "status": "growing",
+    "expectedHarvest": "2024-09-01T00:00:00Z"
+  },
+  {
+    "Id": 6,
+    "farmId": "3",
+    "type": "soybean",
+    "variety": "Roundup Ready",
+    "plantingDate": "2024-04-25T00:00:00Z",
+    "fieldLocation": "Main Field",
+    "status": "growing",
+    "expectedHarvest": "2024-09-15T00:00:00Z"
+  }
+]

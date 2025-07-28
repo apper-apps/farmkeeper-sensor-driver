@@ -1,0 +1,68 @@
+[
+  {
+    "Id": 1,
+    "farmId": "1",
+    "cropId": "1",
+    "title": "Water corn crops",
+    "type": "watering",
+    "dueDate": "2024-07-20T08:00:00Z",
+    "priority": "high",
+    "completed": false,
+    "notes": "Check irrigation system pressure"
+  },
+  {
+    "Id": 2,
+    "farmId": "1",
+    "cropId": "2",
+    "title": "Harvest cherry tomatoes",
+    "type": "harvesting",
+    "dueDate": "2024-07-15T06:00:00Z",
+    "priority": "medium",
+    "completed": false,
+    "notes": "Pick ripe tomatoes in early morning"
+  },
+  {
+    "Id": 3,
+    "farmId": "1",
+    "cropId": "",
+    "title": "Fertilize south field",
+    "type": "fertilizing",
+    "dueDate": "2024-07-25T10:00:00Z",
+    "priority": "medium",
+    "completed": false,
+    "notes": "Apply nitrogen fertilizer"
+  },
+  {
+    "Id": 4,
+    "farmId": "2",
+    "cropId": "5",
+    "title": "Weed bean field",
+    "type": "weeding",
+    "dueDate": "2024-07-18T07:00:00Z",
+    "priority": "high",
+    "completed": true,
+    "notes": "Focus on grass weeds between rows"
+  },
+  {
+    "Id": 5,
+    "farmId": "2",
+    "cropId": "",
+    "title": "Service tractor",
+    "type": "other",
+    "dueDate": "2024-07-30T14:00:00Z",
+    "priority": "low",
+    "completed": false,
+    "notes": "Change oil and check belts"
+  },
+  {
+    "Id": 6,
+    "farmId": "3",
+    "cropId": "6",
+    "title": "Apply pesticide to soybeans",
+    "type": "pest_control",
+    "dueDate": "2024-07-22T06:30:00Z",
+    "priority": "high",
+    "completed": false,
+    "notes": "Spray for aphids - check wind conditions"
+  }
+]

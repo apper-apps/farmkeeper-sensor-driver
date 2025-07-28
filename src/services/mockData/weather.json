@@ -1,0 +1,62 @@
+[
+  {
+    "date": "2024-07-17T00:00:00Z",
+    "temperature": 78,
+    "condition": "sunny",
+    "humidity": 55,
+    "windSpeed": 8,
+    "precipitation": 10,
+    "high": 82,
+    "low": 68
+  },
+  {
+    "date": "2024-07-18T00:00:00Z",
+    "temperature": 76,
+    "condition": "cloudy",
+    "humidity": 62,
+    "windSpeed": 12,
+    "precipitation": 25,
+    "high": 79,
+    "low": 65
+  },
+  {
+    "date": "2024-07-19T00:00:00Z",
+    "temperature": 74,
+    "condition": "rainy",
+    "humidity": 78,
+    "windSpeed": 15,
+    "precipitation": 75,
+    "high": 77,
+    "low": 63
+  },
+  {
+    "date": "2024-07-20T00:00:00Z",
+    "temperature": 80,
+    "condition": "sunny",
+    "humidity": 48,
+    "windSpeed": 6,
+    "precipitation": 5,
+    "high": 85,
+    "low": 70
+  },
+  {
+    "date": "2024-07-21T00:00:00Z",
+    "temperature": 83,
+    "condition": "sunny",
+    "humidity": 45,
+    "windSpeed": 9,
+    "precipitation": 0,
+    "high": 88,
+    "low": 72
+  },
+  {
+    "date": "2024-07-22T00:00:00Z",
+    "temperature": 79,
+    "condition": "cloudy",
+    "humidity": 58,
+    "windSpeed": 11,
+    "precipitation": 30,
+    "high": 82,
+    "low": 67
+  }
+]
