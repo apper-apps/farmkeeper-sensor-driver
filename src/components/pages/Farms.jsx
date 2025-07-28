@@ -154,19 +154,17 @@ setFormData({
 
 const filteredFarms = farms
     .filter(farm => 
-      farm.Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      farm.location.toLowerCase().includes(searchTerm.toLowerCase())
+      (farm.Name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (farm.location || '').toLowerCase().includes(searchTerm.toLowerCase())
     )
     .sort((a, b) => {
       switch (sortBy) {
         case 'name':
-          return a.name.localeCompare(b.name);
+          return (a.Name || '').localeCompare(b.Name || '');
         case 'location':
-          return a.location.localeCompare(b.location);
+          return (a.location || '').localeCompare(b.location || '');
         case 'size':
-          return b.size - a.size;
-        case 'type':
-          return a.type.localeCompare(b.type);
+          return (b.size || 0) - (a.size || 0);
         default:
           return 0;
       }
@@ -239,7 +237,7 @@ const filteredFarms = farms
                     <ApperIcon name="MapPin" size={20} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">{farm.name}</h3>
+<h3 className="font-semibold text-gray-900">{farm.Name}</h3>
                     <p className="text-sm text-gray-600">{farm.location}</p>
                   </div>
                 </div>
