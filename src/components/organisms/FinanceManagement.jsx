@@ -11,6 +11,7 @@ import transactionService from "@/services/api/transactionService";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
+import Modal from "@/components/molecules/Modal";
 import { toast } from "react-toastify";
 import { format, startOfMonth, endOfMonth, subMonths } from "date-fns";
 
@@ -365,86 +366,74 @@ const FinanceManagement = ({ selectedFarm }) => {
       </div>
 
       {/* Add/Edit Form */}
-      <AnimatePresence>
-        {showForm && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Card>
-              <CardHeader>
-                <CardTitle>
-                  {editingTransaction ? "Edit Transaction" : "Add New Transaction"}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <FormField
-                      label="Transaction Type"
-                      type="select"
-                      name="type"
-                      value={formData.type}
-                      onChange={handleInputChange}
-                      options={[
-                        { value: "income", label: "Income" },
-                        { value: "expense", label: "Expense" }
-                      ]}
-                      required
-                    />
-                    <FormField
-                      label="Category"
-                      type="select"
-                      name="category"
-                      value={formData.category}
-                      onChange={handleInputChange}
-                      options={categoryOptions}
-                      required
-                    />
-                    <FormField
-                      label="Amount"
-                      type="number"
-                      name="amount"
-                      value={formData.amount}
-                      onChange={handleInputChange}
-                      placeholder="0.00"
-                      step="0.01"
-                      min="0"
-                      required
-                    />
-                    <FormField
-                      label="Date"
-                      type="date"
-                      name="date"
-                      value={formData.date}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-                  <FormField
-                    label="Description"
-                    name="description"
-                    value={formData.description}
-                    onChange={handleInputChange}
-                    placeholder="Brief description of this transaction"
-                    required
-                  />
-                  <div className="flex justify-end space-x-3">
-                    <Button type="button" variant="outline" onClick={handleCancel}>
-                      Cancel
-                    </Button>
-                    <Button type="submit">
-                      {editingTransaction ? "Update Transaction" : "Add Transaction"}
-                    </Button>
-                  </div>
-                </form>
-              </CardContent>
-            </Card>
-          </motion.div>
-        )}
-      </AnimatePresence>
+{/* Transaction Modal */}
+      <Modal
+        isOpen={showForm}
+        onClose={handleCancel}
+        title={editingTransaction ? "Edit Transaction" : "Add New Transaction"}
+        size="lg"
+      >
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <FormField
+              label="Transaction Type"
+              type="select"
+              name="type"
+              value={formData.type}
+              onChange={handleInputChange}
+              options={[
+                { value: "income", label: "Income" },
+                { value: "expense", label: "Expense" }
+              ]}
+              required
+            />
+            <FormField
+              label="Category"
+              type="select"
+              name="category"
+              value={formData.category}
+              onChange={handleInputChange}
+              options={categoryOptions}
+              required
+            />
+            <FormField
+              label="Amount"
+              type="number"
+              name="amount"
+              value={formData.amount}
+              onChange={handleInputChange}
+              placeholder="0.00"
+              step="0.01"
+              min="0"
+              required
+            />
+            <FormField
+              label="Date"
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <FormField
+            label="Description"
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            placeholder="Brief description of this transaction"
+            required
+          />
+          <div className="flex justify-end space-x-3 pt-4">
+            <Button type="button" variant="outline" onClick={handleCancel}>
+              Cancel
+            </Button>
+            <Button type="submit">
+              {editingTransaction ? "Update Transaction" : "Add Transaction"}
+            </Button>
+          </div>
+        </form>
+      </Modal>
 
       {/* Transactions List */}
       {filteredTransactions.length === 0 ? (
