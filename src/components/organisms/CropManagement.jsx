@@ -211,84 +211,108 @@ const CropManagement = ({ selectedFarm }) => {
       </div>
 
       {/* Add/Edit Form */}
+{/* Modal for Add/Edit Form */}
       <AnimatePresence>
         {showForm && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                handleCancel();
+              }
+            }}
           >
-            <Card>
-              <CardHeader>
-                <CardTitle>
-                  {editingCrop ? "Edit Crop" : "Add New Crop"}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <FormField
-                      label="Crop Type"
-                      type="select"
-                      name="type"
-                      value={formData.type}
-                      onChange={handleInputChange}
-                      options={cropTypes}
-                      required
-                    />
-                    <FormField
-                      label="Variety"
-                      name="variety"
-                      value={formData.variety}
-                      onChange={handleInputChange}
-                      placeholder="e.g., Sweet Corn, Cherry Tomato"
-                      required
-                    />
-                    <FormField
-                      label="Planting Date"
-                      type="date"
-                      name="plantingDate"
-                      value={formData.plantingDate}
-                      onChange={handleInputChange}
-                      required
-                    />
-                    <FormField
-                      label="Field Location"
-                      name="fieldLocation"
-                      value={formData.fieldLocation}
-                      onChange={handleInputChange}
-                      placeholder="e.g., North Field, Greenhouse 1"
-                      required
-                    />
-                    <FormField
-                      label="Status"
-                      type="select"
-                      name="status"
-                      value={formData.status}
-                      onChange={handleInputChange}
-                      options={statusOptions}
-                      required
-                    />
-                    <FormField
-                      label="Expected Harvest Date"
-                      type="date"
-                      name="expectedHarvest"
-                      value={formData.expectedHarvest}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div className="flex justify-end space-x-3">
-                    <Button type="button" variant="outline" onClick={handleCancel}>
-                      Cancel
-                    </Button>
-                    <Button type="submit">
-                      {editingCrop ? "Update Crop" : "Add Crop"}
-                    </Button>
-                  </div>
-                </form>
-              </CardContent>
-            </Card>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.2 }}
+              className="w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Card className="bg-white">
+                <CardHeader className="flex flex-row items-center justify-between">
+                  <CardTitle>
+                    {editingCrop ? "Edit Crop" : "Add New Crop"}
+                  </CardTitle>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={handleCancel}
+                    className="h-8 w-8 p-0"
+                  >
+                    <ApperIcon name="X" size={16} />
+                  </Button>
+                </CardHeader>
+                <CardContent>
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        label="Crop Type"
+                        type="select"
+                        name="type"
+                        value={formData.type}
+                        onChange={handleInputChange}
+                        options={cropTypes}
+                        required
+                      />
+                      <FormField
+                        label="Variety"
+                        name="variety"
+                        value={formData.variety}
+                        onChange={handleInputChange}
+                        placeholder="e.g., Sweet Corn, Cherry Tomato"
+                        required
+                      />
+                      <FormField
+                        label="Planting Date"
+                        type="date"
+                        name="plantingDate"
+                        value={formData.plantingDate}
+                        onChange={handleInputChange}
+                        required
+                      />
+                      <FormField
+                        label="Field Location"
+                        name="fieldLocation"
+                        value={formData.fieldLocation}
+                        onChange={handleInputChange}
+                        placeholder="e.g., North Field, Greenhouse 1"
+                        required
+                      />
+                      <FormField
+                        label="Status"
+                        type="select"
+                        name="status"
+                        value={formData.status}
+                        onChange={handleInputChange}
+                        options={statusOptions}
+                        required
+                      />
+                      <FormField
+                        label="Expected Harvest Date"
+                        type="date"
+                        name="expectedHarvest"
+                        value={formData.expectedHarvest}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    <div className="flex justify-end space-x-3">
+                      <Button type="button" variant="outline" onClick={handleCancel}>
+                        Cancel
+                      </Button>
+                      <Button type="submit">
+                        {editingCrop ? "Update Crop" : "Add Crop"}
+                      </Button>
+                    </div>
+                  </form>
+                </CardContent>
+              </Card>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
