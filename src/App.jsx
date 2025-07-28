@@ -160,7 +160,7 @@ function AppContent() {
     </div>;
   }
 
-  return (
+return (
     <AuthContext.Provider value={authMethods}>
       <Routes>
         <Route path="/login" element={<Login />} />
@@ -169,7 +169,7 @@ function AppContent() {
         <Route path="/error" element={<ErrorPage />} />
         <Route path="/prompt-password/:appId/:emailAddress/:provider" element={<PromptPassword />} />
         <Route path="/reset-password/:appId/:fields" element={<ResetPassword />} />
-        <Route path="/*" element={
+        <Route path="/" element={
           isAuthenticated ? (
             <div className="min-h-screen bg-background font-body">
               <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
@@ -185,14 +185,197 @@ function AppContent() {
                 <main className="flex-1 lg:pl-64">
                   <div className="px-4 py-6 sm:px-6 lg:px-8">
                     {loading ? <Loading /> : error ? <Error message={error} onRetry={loadFarms} /> : (
-                      <Routes>
-                        <Route path="/" element={<Dashboard selectedFarm={selectedFarm} />} />
-                        <Route path="/farms" element={<Farms selectedFarm={selectedFarm} />} />
-                        <Route path="/crops" element={<Crops selectedFarm={selectedFarm} />} />
-                        <Route path="/tasks" element={<Tasks selectedFarm={selectedFarm} />} />
-                        <Route path="/finances" element={<Finances selectedFarm={selectedFarm} />} />
-                        <Route path="/weather" element={<Weather />} />
-                      </Routes>
+                      <Dashboard selectedFarm={selectedFarm} />
+                    )}
+                  </div>
+                </main>
+              </div>
+
+              <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                className="z-[9999]"
+              />
+            </div>
+          ) : <Loading />
+        } />
+        <Route path="/farms" element={
+          isAuthenticated ? (
+            <div className="min-h-screen bg-background font-body">
+              <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+              
+              <div className="flex flex-col min-h-screen">
+                <Header 
+                  selectedFarm={selectedFarm}
+                  farms={farms}
+                  onFarmChange={handleFarmChange}
+                  onToggleSidebar={toggleSidebar}
+                />
+                
+                <main className="flex-1 lg:pl-64">
+                  <div className="px-4 py-6 sm:px-6 lg:px-8">
+                    {loading ? <Loading /> : error ? <Error message={error} onRetry={loadFarms} /> : (
+                      <Farms selectedFarm={selectedFarm} />
+                    )}
+                  </div>
+                </main>
+              </div>
+
+              <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                className="z-[9999]"
+              />
+            </div>
+          ) : <Loading />
+        } />
+        <Route path="/crops" element={
+          isAuthenticated ? (
+            <div className="min-h-screen bg-background font-body">
+              <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+              
+              <div className="flex flex-col min-h-screen">
+                <Header 
+                  selectedFarm={selectedFarm}
+                  farms={farms}
+                  onFarmChange={handleFarmChange}
+                  onToggleSidebar={toggleSidebar}
+                />
+                
+                <main className="flex-1 lg:pl-64">
+                  <div className="px-4 py-6 sm:px-6 lg:px-8">
+                    {loading ? <Loading /> : error ? <Error message={error} onRetry={loadFarms} /> : (
+                      <Crops selectedFarm={selectedFarm} />
+                    )}
+                  </div>
+                </main>
+              </div>
+
+              <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                className="z-[9999]"
+              />
+            </div>
+          ) : <Loading />
+        } />
+        <Route path="/tasks" element={
+          isAuthenticated ? (
+            <div className="min-h-screen bg-background font-body">
+              <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+              
+              <div className="flex flex-col min-h-screen">
+                <Header 
+                  selectedFarm={selectedFarm}
+                  farms={farms}
+                  onFarmChange={handleFarmChange}
+                  onToggleSidebar={toggleSidebar}
+                />
+                
+                <main className="flex-1 lg:pl-64">
+                  <div className="px-4 py-6 sm:px-6 lg:px-8">
+                    {loading ? <Loading /> : error ? <Error message={error} onRetry={loadFarms} /> : (
+                      <Tasks selectedFarm={selectedFarm} />
+                    )}
+                  </div>
+                </main>
+              </div>
+
+              <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                className="z-[9999]"
+              />
+            </div>
+          ) : <Loading />
+        } />
+        <Route path="/finances" element={
+          isAuthenticated ? (
+            <div className="min-h-screen bg-background font-body">
+              <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+              
+              <div className="flex flex-col min-h-screen">
+                <Header 
+                  selectedFarm={selectedFarm}
+                  farms={farms}
+                  onFarmChange={handleFarmChange}
+                  onToggleSidebar={toggleSidebar}
+                />
+                
+                <main className="flex-1 lg:pl-64">
+                  <div className="px-4 py-6 sm:px-6 lg:px-8">
+                    {loading ? <Loading /> : error ? <Error message={error} onRetry={loadFarms} /> : (
+                      <Finances selectedFarm={selectedFarm} />
+                    )}
+                  </div>
+                </main>
+              </div>
+
+              <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                className="z-[9999]"
+              />
+            </div>
+          ) : <Loading />
+        } />
+        <Route path="/weather" element={
+          isAuthenticated ? (
+            <div className="min-h-screen bg-background font-body">
+              <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+              
+              <div className="flex flex-col min-h-screen">
+                <Header 
+                  selectedFarm={selectedFarm}
+                  farms={farms}
+                  onFarmChange={handleFarmChange}
+                  onToggleSidebar={toggleSidebar}
+                />
+                
+                <main className="flex-1 lg:pl-64">
+                  <div className="px-4 py-6 sm:px-6 lg:px-8">
+                    {loading ? <Loading /> : error ? <Error message={error} onRetry={loadFarms} /> : (
+                      <Weather />
                     )}
                   </div>
                 </main>
