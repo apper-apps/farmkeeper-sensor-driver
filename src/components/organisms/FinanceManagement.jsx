@@ -376,8 +376,8 @@ setFormData({
         title={editingTransaction ? "Edit Transaction" : "Add New Transaction"}
         size="lg"
       >
-        <form onSubmit={handleSubmit} className="space-y-4">
-<FormField
+<form onSubmit={handleSubmit} className="space-y-4">
+          <FormField
             label="Transaction Name"
             name="name"
             value={formData.name}
