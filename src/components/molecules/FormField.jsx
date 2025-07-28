@@ -52,9 +52,10 @@ const FormField = ({
           )}
           {...props}
         />
-      ) : (
+) : (
         <Input
           id={fieldId}
+          name={props.name}
           type={type}
           value={value}
           onChange={onChange}
