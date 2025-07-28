@@ -23,7 +23,8 @@ const FinanceManagement = ({ selectedFarm }) => {
   const [editingTransaction, setEditingTransaction] = useState(null);
   const [filter, setFilter] = useState("all");
 
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
+    name: "",
     type: "expense",
     category: "",
     amount: "",
@@ -86,7 +87,7 @@ const FinanceManagement = ({ selectedFarm }) => {
     }
 
     try {
-      const transactionData = {
+const transactionData = {
         ...formData,
         farmId: selectedFarm,
         amount: parseFloat(formData.amount)
@@ -122,6 +123,7 @@ const FinanceManagement = ({ selectedFarm }) => {
   const handleEdit = (transaction) => {
     setEditingTransaction(transaction);
     setFormData({
+name: transaction.Name || "",
       type: transaction.type,
       category: transaction.category,
       amount: transaction.amount.toString(),
@@ -147,7 +149,8 @@ const FinanceManagement = ({ selectedFarm }) => {
   const handleCancel = () => {
     setShowForm(false);
     setEditingTransaction(null);
-    setFormData({
+setFormData({
+      name: "",
       type: "expense",
       category: "",
       amount: "",
@@ -374,6 +377,14 @@ const FinanceManagement = ({ selectedFarm }) => {
         size="lg"
       >
         <form onSubmit={handleSubmit} className="space-y-4">
+<FormField
+            label="Transaction Name"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            placeholder="Enter transaction name"
+            required
+          />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField
               label="Transaction Type"
