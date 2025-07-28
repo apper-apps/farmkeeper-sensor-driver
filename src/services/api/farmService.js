@@ -8,11 +8,12 @@ const farmService = {
       });
       
       const params = {
-        fields: [
+fields: [
           { field: { Name: "Name" } },
           { field: { Name: "location" } },
           { field: { Name: "size" } },
-          { field: { Name: "createdAt" } }
+          { field: { Name: "createdAt" } },
+          { field: { Name: "Tags" } }
         ]
       };
       
@@ -42,12 +43,13 @@ const farmService = {
         apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
       });
       
-      const params = {
+const params = {
         fields: [
           { field: { Name: "Name" } },
           { field: { Name: "location" } },
           { field: { Name: "size" } },
-          { field: { Name: "createdAt" } }
+          { field: { Name: "createdAt" } },
+          { field: { Name: "Tags" } }
         ]
       };
       
@@ -78,11 +80,12 @@ const farmService = {
       });
       
       const params = {
-        records: [{
+records: [{
           Name: farmData.name,
           location: farmData.location,
           size: parseFloat(farmData.size),
-          createdAt: new Date().toISOString()
+          createdAt: new Date().toISOString(),
+          Tags: farmData.tags || ""
         }]
       };
       
@@ -124,12 +127,12 @@ const farmService = {
       const params = {
         records: [{
           Id: parseInt(id),
-          Name: farmData.name,
+Name: farmData.name,
           location: farmData.location,
-          size: parseFloat(farmData.size)
+          size: parseFloat(farmData.size),
+          Tags: farmData.tags || ""
         }]
       };
-      
       const response = await apperClient.updateRecord('farm', params);
       
       if (!response.success) {

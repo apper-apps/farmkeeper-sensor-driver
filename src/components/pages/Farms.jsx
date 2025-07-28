@@ -138,12 +138,11 @@ const Farms = ({ selectedFarm }) => {
 
   const openEditModal = (farm) => {
     setSelectedFarmData(farm);
-    setFormData({
-      name: farm.name,
+setFormData({
+      name: farm.Name || farm.name,
       location: farm.location,
       size: farm.size.toString(),
-      type: farm.type,
-      description: farm.description || ''
+      tags: farm.Tags || ''
     });
     setShowEditModal(true);
   };
@@ -230,7 +229,7 @@ const Farms = ({ selectedFarm }) => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredFarms.map((farm) => (
-            <Card key={farm.Id} className="p-6 hover:shadow-lg transition-shadow">
+<Card key={farm.Id} className="p-6 hover:shadow-lg transition-shadow">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className={cn(
