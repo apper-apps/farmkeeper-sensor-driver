@@ -152,9 +152,9 @@ setFormData({
     setShowDeleteModal(true);
   };
 
-  const filteredFarms = farms
+const filteredFarms = farms
     .filter(farm => 
-      farm.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      farm.Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       farm.location.toLowerCase().includes(searchTerm.toLowerCase())
     )
     .sort((a, b) => {
