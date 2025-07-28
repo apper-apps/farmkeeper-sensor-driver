@@ -19,7 +19,8 @@ const CropManagement = ({ selectedFarm }) => {
   const [editingCrop, setEditingCrop] = useState(null);
   const [filter, setFilter] = useState("all");
 
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
+    Name: "",
     type: "",
     variety: "",
     plantingDate: "",
@@ -76,7 +77,7 @@ const CropManagement = ({ selectedFarm }) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!selectedFarm) {
@@ -87,6 +88,7 @@ const CropManagement = ({ selectedFarm }) => {
     try {
       const cropData = {
         ...formData,
+        Name: formData.Name || `${formData.type} - ${formData.variety}`.trim(),
         farmId: selectedFarm
       };
 
@@ -98,13 +100,16 @@ const CropManagement = ({ selectedFarm }) => {
         toast.success("Crop updated successfully!");
       } else {
         const newCrop = await cropService.create(cropData);
-        setCrops(prev => [...prev, newCrop]);
-        toast.success("Crop added successfully!");
+        if (newCrop) {
+          setCrops(prev => [...prev, newCrop]);
+          toast.success("Crop added successfully!");
+        }
       }
 
       setShowForm(false);
       setEditingCrop(null);
       setFormData({
+        Name: "",
         type: "",
         variety: "",
         plantingDate: "",

@@ -132,8 +132,8 @@ const cropService = {
       });
       
       const params = {
-        records: [{
-          Name: cropData.Name || cropData.name,
+records: [{
+          Name: cropData.Name || cropData.name || `${cropData.type} - ${cropData.variety}`,
           type: cropData.type,
           variety: cropData.variety,
           plantingDate: cropData.plantingDate,
