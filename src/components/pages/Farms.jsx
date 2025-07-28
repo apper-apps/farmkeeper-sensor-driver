@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import Button from '@/components/atoms/Button';
-import Card from '@/components/atoms/Card';
+import { Card } from '@/components/atoms/Card';
 import Input from '@/components/atoms/Input';
 import Select from '@/components/atoms/Select';
 import Label from '@/components/atoms/Label';
