@@ -123,9 +123,10 @@ const handleSubmit = async (e) => {
     }
   };
 
-  const handleEdit = (crop) => {
+const handleEdit = (crop) => {
     setEditingCrop(crop);
     setFormData({
+      Name: crop.Name || "",
       type: crop.type,
       variety: crop.variety,
       plantingDate: crop.plantingDate.split("T")[0],
@@ -151,8 +152,9 @@ const handleSubmit = async (e) => {
 
   const handleCancel = () => {
     setShowForm(false);
-    setEditingCrop(null);
+setEditingCrop(null);
     setFormData({
+      Name: "",
       type: "",
       variety: "",
       plantingDate: "",
@@ -254,8 +256,16 @@ const handleSubmit = async (e) => {
                   </Button>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-4">
+<form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <FormField
+                        label="Name"
+                        name="Name"
+                        value={formData.Name}
+                        onChange={handleInputChange}
+                        placeholder="Enter crop name"
+                        required
+                      />
                       <FormField
                         label="Crop Type"
                         type="select"
@@ -274,6 +284,14 @@ const handleSubmit = async (e) => {
                         required
                       />
                       <FormField
+                        label="Field Location"
+                        name="fieldLocation"
+                        value={formData.fieldLocation}
+                        onChange={handleInputChange}
+                        placeholder="e.g., North Field, Greenhouse 1"
+                        required
+                      />
+                      <FormField
                         label="Planting Date"
                         type="date"
                         name="plantingDate"
@@ -282,12 +300,11 @@ const handleSubmit = async (e) => {
                         required
                       />
                       <FormField
-                        label="Field Location"
-                        name="fieldLocation"
-                        value={formData.fieldLocation}
+                        label="Expected Harvest Date"
+                        type="date"
+                        name="expectedHarvest"
+                        value={formData.expectedHarvest}
                         onChange={handleInputChange}
-                        placeholder="e.g., North Field, Greenhouse 1"
-                        required
                       />
                       <FormField
                         label="Status"
@@ -297,13 +314,6 @@ const handleSubmit = async (e) => {
                         onChange={handleInputChange}
                         options={statusOptions}
                         required
-                      />
-                      <FormField
-                        label="Expected Harvest Date"
-                        type="date"
-                        name="expectedHarvest"
-                        value={formData.expectedHarvest}
-                        onChange={handleInputChange}
                       />
                     </div>
                     <div className="flex justify-end space-x-3">
