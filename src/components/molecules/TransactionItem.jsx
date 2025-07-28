@@ -42,8 +42,8 @@ const TransactionItem = ({ transaction, onEdit, onDelete }) => {
             
             <div className="flex-1 min-w-0">
               <div className="flex items-center space-x-2 mb-1">
-                <h3 className="font-medium text-primary truncate">
-                  {transaction.description}
+<h3 className="font-medium text-primary truncate">
+                  {transaction.Name || transaction.description}
                 </h3>
                 <Badge variant={transaction.type === "income" ? "success" : "error"}>
                   {transaction.type}
